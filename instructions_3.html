@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS指令</title>
+</head>
+<body ng-app="myApp">
+    <!--<div ng-app="" ng-init="quantity=1;price=5">
+        <h4>数据绑定</h4>
+        <h2>价格计算器</h2>
+        数量：<input type="number" ng-model="quantity">
+        价格：<input type="number" ng-model="price">
+        <p><b>总价：</b>{{quantity * price}}</p>
+        若不在ng-init定义初始值，结果会显示null，且初始值定义要用冒号，否则会报错
+    </div>-->
+
+    <!--<div ng-app="" ng-init="names=['Jani','Hege','Kai']">
+        <h4>数据绑定</h4>
+        <p>使用 ng-repeat 来循环数组</p>
+        <ul>
+            <li ng-repeat="x in names">
+                {{x}}
+            </li>
+        </ul>
+    </div>-->
+
+    <!--<div ng-app="" ng-init="names=[
+    {name:'Jani',country:'Norway'},
+    {name:'Hege',country:'Sweden'},
+    {name:'Kai',country:'Denmark'}]">
+
+        <p>循环对象：</p>
+        <ul>
+            <li ng-repeat="x in names">
+                {{x.name + " " + x.country}}
+            </li>
+        </ul>
+    </div>-->
+
+    <h4>创建自定义指令</h4>
+    元素名：
+    <runoob-directive></runoob-directive>
+    属性：
+    <div runoob-directive></div>
+    类名：
+    <div class="runoob-directive"></div>
+    注释：
+     <!--directive: runoob-directive-->
+
+    <script src="./js/angular.js"></script>
+    <script>
+
+        /*指令：
+         * ng-app:定义了应用程序的根元素
+         * ng-init:为应用程序定义初始值
+         * ng-model：绑定HTML元素到应用程序数据
+         * ng-repeat:对于集合中（数组中）的每个项会克隆一次HTML元素*/
+
+        /*restrict值可以是以下几种：
+        E作为元素名使用；
+        A作为属性使用；
+        C作为类名使用；
+        M作为注释使用；
+        默认值为EA，即可以通过元素名和属性名来调用指令*/
+
+        var app = angular.module("myApp", []);
+        app.directive("runoobDirective", function() {
+            return {
+                restrict : "E A C M",
+                template : "<h1>自定义指令!</h1>"
+//                templateUrl
+            };
+        });
+    </script>
+</body>
+</html>

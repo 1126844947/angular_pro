@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS简介</title>
+</head>
+<body>
+    <!--AngularJS扩展了HTML-->
+    <!--<div ng-app="">
+        <p>名字：<input type="text" ng-model="name"></p>
+        <h1>Hello {{name}}</h1>
+    </div>
+
+    &lt;!&ndash;AngularJS指令&ndash;&gt;
+    <div ng-app="" ng-init="firstName='John'">
+        <p>姓名为<span ng-bind="firstName"></span></p>
+    </div>
+
+    &lt;!&ndash;带有有效的HTML5&ndash;&gt;
+    &lt;!&ndash;使用 data-ng- 来让网页对 HTML5 有效。&ndash;&gt;
+    <div data-ng-app="" data-ng-init="firstName2='John2'">
+        <p>姓名为：<span data-ng-bind="firstName2"></span></p>
+    </div>-->
+
+    <!--AngularJS应用-->
+    <div ng-app="myApp_1" ng-controller="myCtrl_1">
+        名：<input type="text" ng-model="firstName"/><br>
+        姓：<input type="text" ng-model="lastName"/><br>
+        <br>
+        姓名：{{firstName + " " + lastName}}
+    </div>
+
+    <script src="./js/angular.js"></script>
+    <script>
+
+        var app = angular.module("myApp_1",[]);//AngularJS模块
+        //AngularJS控制器控制应用
+        app.controller('myCtrl_1', function ($scope) {
+            $scope.firstName = "John";
+            $scope.lastName = "Doe";
+        })
+    </script>
+</body>
+</html>

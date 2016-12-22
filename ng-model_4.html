@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS模型</title>
+    <style>
+        form .ng-invalid{
+            background-color: lightblue;
+        }
+        /*ng-model指令根据表单域的状态添加/移除以下类：
+        ng-empty:
+        ng-not-empty:
+        ng-touched:
+        ng-untouched:
+        ng-valid:
+        ng-invalid:
+        ng-dirty:
+        ng-pending:
+        ng-pristine*/
+    </style>
+</head>
+<body>
+    <h4>使用ng-model指令来绑定输入域的值到控制器的属性</h4>
+    <br>
+    <br>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        名字：<input type="text" ng-model="name">
+
+        <h5>双向绑定</h5>
+        <h2>你输入了：{{name}}</h2>
+        <br>
+
+        <!--<form name="myForm" ng-init="myText = 'test@runoob.com'">
+            <h5>验证用户输入</h5>
+            Email:
+            <input type="email" name="myAddress" ng-model="myText" required>
+            &lt;!&ndash;以下信息会在ng-show属性返回true的情况下显示&ndash;&gt;
+            <span ng-show="myForm.myAddress.$error.email">不是一个合法的邮箱地址</span>
+
+            <h1>状态</h1>
+            &lt;!&ndash;内容验证正确即为true&ndash;&gt;
+            {{myForm.myAddress.$valid}}
+            &lt;!&ndash;值改变即为true&ndash;&gt;
+            {{myForm.myAddress.$dirty}}
+            &lt;!&ndash;失去过一次焦点（通过触屏点击）即为true&ndash;&gt;
+            {{myForm.myAddress.$touched}}
+        </form>-->
+
+        <h5>CSS类</h5>
+
+        <form name="myForm2">
+            输入你的名字：
+            <input name="myAddress2" ng-model="text" required>
+        </form>
+    </div>
+    <script src="./js/angular.min.js"></script>
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller("myCtrl",function($scope){
+            $scope.name = "";
+        });
+    </script>
+</body>
+</html>

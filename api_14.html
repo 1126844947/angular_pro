@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>AngularJS API</title>
+    </head>
+    <body>
+
+        <div ng-app="myApp" ng-controller="myCtrl">
+            <table>
+                <tr>
+                    <td ng-repeat="x in arr">{{x}}</td>
+                </tr>
+                <tr>
+                    <td ng-repeat="y in arr2">{{y}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <script src="./js/angular.min.js"></script>
+        <script>
+            var app = angular.module("myApp",[]);
+            app.controller("myCtrl",function($scope){
+                $scope.arr = new Array();
+                $scope.arr = ["mystring","mstring","Ystring",122];
+                $scope.arr2 = new Array();
+                $scope.arr2[0] = angular.isString($scope.arr[0]);
+                $scope.arr2[1] = angular.uppercase($scope.arr[1]);
+                $scope.arr2[2] = angular.lowercase($scope.arr[2]);
+                /*$scope.arr2[3] = angular.isNumber($scope.arr[3]);
+                * 出错，why*/
+            })
+        </script>
+    </body>
+</html>

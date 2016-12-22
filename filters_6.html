@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS过滤器</title>
+</head>
+<body>
+
+    <div ng-app="myApp" ng-controller="namesCtrl">
+        <ul>
+            <li ng-repeat="x in names">
+                {{x.name + "," + x.country}}
+            </li>
+        </ul>
+        <br>
+        <h4>过滤器</h4>
+        <p><input type="text" ng-model="test"></p>
+        <ul>
+            <li ng-repeat="x in names | filter:test | orderBy:'country'">
+                {{(x.name | uppercase) + "," + x.country}}
+            </li>
+        </ul>
+    </div>
+
+    <script src="./js/angular.min.js"></script>
+    <script>
+        angular.module("myApp",[])
+                .controller("namesCtrl",function($scope){
+                    $scope.names = [
+                        {name:"Jani",country:"Borway"},
+                        {name:"Hege",country:"Cweden"},
+                        {name:"Kai",country:"Aenmark"}
+                    ];
+                });
+    </script>
+</body>
+</html>

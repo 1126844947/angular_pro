@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS事件</title>
+    <!-- ng-cloak防止AngularJS节点闪烁-->
+    <style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\:form{display:block;}.ng-animate-start{clip:rect(0,auto,auto,0);-ms-zoom:1.0001;}.ng-animate-active{clip:rect(-1px,auto,auto,0);-ms-zoom:1;}
+    </style>
+</head>
+<body ng-app="myApp">
+    <h4>ng-click指令</h4>
+    <div ng-controller="myCtrl">
+        <button ng-click="count = count+1">点我！</button>
+        <p ng-cloak>{{count}}</p>
+    </div>
+    <div ng-controller="personCtrl">
+        <button ng-click="toggle()">隐藏/显示</button>
+        <h5>ng-hide(隐藏)</h5>
+        <p ng-cloak ng-hide="myVar">
+            名：<input type="text" ng-model="firstName">
+            <br>
+            姓名：<input type="text" ng-model="lastName">
+            <br>
+            Full Name:{{firstName + " " + lastName}}
+        </p>
+        <h5>ng-show(显示)</h5>
+        <p ng-cloak ng-show="myVar">
+            名：<input type="text" ng-model="firstName">
+            <br>
+            姓名：<input type="text" ng-model="lastName">
+            <br>
+            Full Name:{{firstName + " " + lastName}}
+        </p>
+    </div>
+    <script src="./js/angular.min.js"></script>
+    <script>
+        var app = angular.module("myApp",[]);
+        app.controller("myCtrl",function($scope){
+            $scope.count = 0;
+        })
+        /*
+        * 隐藏HTML元素
+        * ng-hide指令用于设置应用部分是否可见
+        * ng-hide="true"设置HTML元素不可见
+        * ng-hide="false"设置HTML元素可见*/
+        app.controller("personCtrl",function($scope){
+            $scope.firstName = "John";
+            $scope.lastName = "Deo";
+            $scope.myVar = false;
+            $scope.toggle = function(){
+                $scope.myVar = !$scope.myVar;
+            };
+        });
+    </script>
+</body>
+</html>

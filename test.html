@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./bower_components/angular/angular.min.js"></script>
+</head>
+<body ng-controller="myCtrl">
+<div>
+    <input type="text" ng-model="input"/>
+    <!--<p ng-bind="input"></p>-->
+    <button ng-click="myClick()">点击</button>
+</div>
+<script>
+    var app = angular.module("app",[]);
+    app.controller("myCtrl",function($scope){
+//        $scope.input = "4444";
+        $scope.myClick = function(){
+//            $scope.input = "55555";
+            alert($scope.input);
+
+        }
+    })
+</script>
+</body>
+</html>

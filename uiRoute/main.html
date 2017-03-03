@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ui-router</title>
+
+    <script src="../js/angular.min.js"></script>
+    <script src="../js/angular-ui-router.min.js"></script>
+    <script src="../js/ngTouch.min.js"></script>
+    <script src="app.js"></script>
+    <style>
+        .mydiv{
+            width: 100px;
+            height: 100px;
+            background-color: rosybrown;
+        }
+    </style>
+</head>
+<body data-ng-app="myApp" ng-controller="mainCtrl">
+    <h1>AngularJS Home Page (Ui-router Demo)</h1>
+    <!--<button ng-click="go(12)">跳转到page2</button>-->
+    <div ui-view=""></div>
+
+    <script>
+        myApp.controller('mainCtrl', function ($scope, $state) {
+            $scope.go = function (producerId) {
+                $state.go('page2', {producerId: producerId});
+            };
+            $scope.myClick = function(num){
+                console.log(num);
+                switch (num){
+                    case 1:
+                        $state.go('page2');
+                        break;
+                    case 2:
+                        $state.go('page3');
+                        break;
+                    case 3:
+                        alert("我是page3");
+                        break;
+
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

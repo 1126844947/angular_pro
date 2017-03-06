@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>深拷贝和浅拷贝</title>
+</head>
+<body>
+
+    <script>
+        var arr = ['one','two','three'];
+        console.log('arr');
+        console.log(arr);
+        var obj = [
+            {
+                a:10,b:20
+            },
+            {
+                a:11,b:21
+            }
+        ];
+        console.log('arr');
+        console.log(arr);
+        console.log('obj');
+        console.log(obj);
+
+        console.log('浅拷贝');
+        var arrCopy = arr;
+        arrCopy[1] = 'test';
+        console.log('arr');
+        console.log(arr);
+        console.log('arrCopy');
+        console.log(arrCopy);
+
+        var objCopy = obj;
+        objCopy[1].a='objCopy';
+        console.log('obj');
+        console.log(obj);
+        console.log('objCopy');
+        console.log(objCopy);
+
+        console.log('深拷贝');
+        var arrCopy2 = arr.slice(0);
+        arrCopy2[1] = 'arrCopy2';
+        console.log('arr');
+        console.log(arr);
+        console.log('arrCopy2');
+        console.log(arrCopy2);
+
+        var objCopy2 = obj.slice(0);
+        /*for(var item in objCopy2){
+            objCopy2[item] = objCopy2[item];
+        }*/
+        objCopy2[1].a='objCopy2';
+        console.log('obj');
+        console.log(obj);
+        console.log('objCopy2');
+        console.log(objCopy2);
+
+        function deepCopy(p, c) {
+
+            var c = c || {};
+            for (var i in p) {
+                if (typeof p[i] === 'object') {
+                    c[i] = (p[i].constructor === Array) ? [] : {};
+                    deepCopy(p[i], c[i]);
+                } else {
+                    c[i] = p[i];
+                }
+            }
+            return c;
+        }
+
+        console.log('deepCopy');
+        var arrCopy3 = [];
+        console.log(arrCopy3);
+        console.log(obj);
+
+        arrCopy3 = deepCopy(obj,arrCopy3);
+        arrCopy3[1].a='objCopy3';
+
+        console.log('arrCopy3');
+        console.log(arrCopy3);
+        console.log(obj);
+
+    </script>
+</body>
+</html>
